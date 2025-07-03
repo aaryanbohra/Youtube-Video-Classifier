@@ -4,7 +4,6 @@ from azure.ai.inference.models import SystemMessage, UserMessage
 from azure.core.credentials import AzureKeyCredential
 import api
 
-#api_key="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"
 endpoint = "https://models.github.ai/inference"
 model = "deepseek/DeepSeek-V3-0324"
 
