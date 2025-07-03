@@ -1,43 +1,46 @@
 import os
-from azure.ai.inference import ChatCompletionsClient
-from azure.ai.inference.models import SystemMessage, UserMessage
-from azure.core.credentials import AzureKeyCredential
-import api
+from mistralai import Mistral, UserMessage, SystemMessage
+import api  # assuming you still keep your token in api.py
 
 endpoint = "https://models.github.ai/inference"
-model = "deepseek/DeepSeek-V3-0324"
+model_name = "mistral-ai/Mistral-Large-2411"
 
-
-client = ChatCompletionsClient(
-    endpoint=endpoint,
-    credential=AzureKeyCredential(api.token),
+client = Mistral(
+    api_key=api.token,  # or os.environ["GITHUB_TOKEN"] if you prefer
+    server_url=endpoint
 )
 
 def classify_video(metadata, transcript):
     prompt = f"""
-You are a content classifier. Given a YouTube video's metadata and transcript, categorize it into ONE of the following categories:
+You are a content classifier. Given a YouTube video's metadata and transcript, respond with ONE of the following categories and a confidence score from 0–100.
+
+Categories:
 Educational, Informational, Entertainment, News, Gaming, Music, Sports, DIY, Vlog, Review, Commentary.
-Also give Confidence: <0-100> right after giving category
-Keep your explanation concise (no more than 2–3 sentences).
+
+Respond ONLY in this format:
+
+<category> | Confidence: <confidence>
+<br>
+</br>
+Explanation: <2-3 concise sentences>
+
+Do not include any other formatting like <think> or HTML.
+
 Title: {metadata['title']}
 Description: {metadata['description']}
 Tags: {', '.join(metadata['tags'])}
-Transcript: {transcript[:1000]}
-
-Category:
+Transcript: {transcript[:300]}
 """
-    response = client.complete(
+
+    response = client.chat.complete(
+        model=model_name,
         messages=[
-            SystemMessage("You are a helpful assistant."),
-            UserMessage(prompt),
+            SystemMessage(content="You are a helpful assistant."),
+            UserMessage(content=prompt),
         ],
         temperature=0,
-        top_p=1.0,
         max_tokens=512,
-        model=model,
+        top_p=1.0
     )
 
     return response.choices[0].message.content.strip()
-
-
-
