@@ -12,7 +12,6 @@ It uses video metadata and transcripts to make informed predictions and confiden
 - ✅ Classifies videos into clear categories  
 - ✅ Uses **Mistral-Large-2411 model** via GitHub AI inference API  
 - ✅ Supports **YouTube Data API** and transcript extraction  
-- ✅ Simple web UI with **Streamlit**  
-- ✅ Modular, extensible code structure  
+- ✅ Simple web UI with **Streamlit**   
 
 ---
