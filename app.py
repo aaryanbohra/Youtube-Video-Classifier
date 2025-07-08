@@ -7,7 +7,6 @@ headers = {
     "authorization": st.secrets["YT_API_KEY"]
 }
 
-token = token
 st.title("YouTube Video Topic Classifier (DeepSeek)")
 
 url = st.text_input("Enter YouTube Video URL:")
