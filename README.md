@@ -3,7 +3,10 @@
 A **Streamlit web app** that classifies YouTube videos into one of several categories  
 (e.g., *Educational, Entertainment, Music, Gaming…*) using **Mistral LLMs hosted on GitHub Models API**.  
 
+**https://youtube-video-classifier.streamlit.app/**
+
 It uses video metadata and transcripts to make informed predictions and confidence scores.
+
 
 ---
 
