@@ -7,7 +7,7 @@ headers = {
     "yt_api_key": st.secrets["YT_API_KEY"]
 }
 
-st.title("YouTube Video Topic Classifier (DeepSeek)")
+st.title("YouTube Video Topic Classifier")
 
 url = st.text_input("Enter YouTube Video URL:")
 
