@@ -1,12 +1,12 @@
 import os
 from mistralai import Mistral, UserMessage, SystemMessage
-import api  # assuming you still keep your token in api.py
+
 
 endpoint = "https://models.github.ai/inference"
 model_name = "mistral-ai/Mistral-Large-2411"
 
 client = Mistral(
-    api_key=api.token,  # or os.environ["GITHUB_TOKEN"] if you prefer
+    api_key=token,  # or os.environ["GITHUB_TOKEN"] if you prefer
     server_url=endpoint
 )
 
