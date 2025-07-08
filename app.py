@@ -1,7 +1,6 @@
 import streamlit as st
 import youtube
 import model
-import api
 
 
 
@@ -11,7 +10,7 @@ url = st.text_input("Enter YouTube Video URL:")
 
 if url:
     video_id = youtube.extract_video_id(url)
-    metadata = youtube.fetch_metadata(video_id, api.YT_API_KEY)
+    metadata = youtube.fetch_metadata(video_id, YT_API_KEY)
 
     if metadata is None:
         st.error("Could not fetch video metadata. Check the URL or API key.")
