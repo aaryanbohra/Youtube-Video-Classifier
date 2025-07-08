@@ -8,7 +8,7 @@ endpoint = "https://models.github.ai/inference"
 model_name = "mistral-ai/Mistral-Large-2411"
 
 client = Mistral(
-    api_key= app.token,  # or os.environ["GITHUB_TOKEN"] if you prefer
+    api_key=st.secrets["token"],
     server_url=endpoint
 )
 
