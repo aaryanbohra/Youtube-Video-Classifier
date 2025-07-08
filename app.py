@@ -3,8 +3,8 @@ import youtube
 import model
 
 headers = {
-    "authorization": st.secrets["token"],
-    "authorization": st.secrets["YT_API_KEY"]
+    "github_auth": st.secrets["token"],
+    "yt_api_key": st.secrets["YT_API_KEY"]
 }
 
 st.title("YouTube Video Topic Classifier (DeepSeek)")
