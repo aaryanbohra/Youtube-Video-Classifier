@@ -1,6 +1,7 @@
 import os
 from mistralai import Mistral, UserMessage, SystemMessage
 import app
+import streamlit as st
 
 
 endpoint = "https://models.github.ai/inference"
