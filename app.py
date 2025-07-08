@@ -18,6 +18,8 @@ if url:
     if metadata is None:
         st.error("Could not fetch video metadata. Check the URL or API key.")
     else:
+        if metadata.get('thumbnail_url'):
+            st.image(metadata['thumbnail_url'], caption=(f"**{metadata['title']}**"))
         transcript = youtube.fetch_transcript(video_id)
         category = model.classify_video(metadata, transcript, headers["github_auth"])
         st.write(f"**Predicted Category:** {category}")
