@@ -21,10 +21,18 @@ def fetch_metadata(video_id, api_key):
     response = request.execute()
     if response['items']:
         snippet = response['items'][0]['snippet']
+        thumbnails = snippet.get('thumbnails', {})
+        thumbnail_url = (
+            thumbnails.get('high', {}).get('url') or
+            thumbnails.get('medium', {}).get('url') or
+            thumbnails.get('default', {}).get('url') or
+            ""
+        )
         return {
             'title': snippet['title'],
             'description': snippet['description'],
-            'tags': snippet.get('tags', [])
+            'tags': snippet.get('tags', []),
+            'thumbnail_url': thumbnail_url
         }
     return None
 
