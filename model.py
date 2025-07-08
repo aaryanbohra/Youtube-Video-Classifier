@@ -1,18 +1,14 @@
-import os
 from mistralai import Mistral, UserMessage, SystemMessage
-import app
-import streamlit as st
-
 
 endpoint = "https://models.github.ai/inference"
 model_name = "mistral-ai/Mistral-Large-2411"
 
-client = Mistral(
-    api_key=github_auth,
-    server_url=endpoint
-)
+def classify_video(metadata, transcript, github_token):
+    client = Mistral(
+        api_key=github_token,
+        server_url=endpoint
+    )
 
-def classify_video(metadata, transcript):
     prompt = f"""
 You are a content classifier. Given a YouTube video's metadata and transcript, respond with ONE of the following categories and a confidence score from 0–100.
 
