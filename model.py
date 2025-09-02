@@ -26,7 +26,6 @@ Do not include any other formatting like <think> or HTML.
 
 Title: {metadata['title']}
 Description: {metadata['description']}
-Tags: {', '.join(metadata['tags'])}
 Transcript: {transcript[:300]}
 """
 
@@ -42,3 +41,4 @@ Transcript: {transcript[:300]}
     )
 
     return response.choices[0].message.content.strip()
+
