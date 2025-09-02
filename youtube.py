@@ -31,7 +31,6 @@ def fetch_metadata(video_id, api_key):
         return {
             'title': snippet['title'],
             'description': snippet['description'],
-            'tags': snippet.get('tags', []),
             'thumbnail_url': thumbnail_url
         }
     return None
@@ -44,3 +43,4 @@ def fetch_transcript(video_id):
         return text
     except:
         return ""
+
